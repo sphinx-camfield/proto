@@ -7,7 +7,8 @@ message Empty {}
 message RoomTokenReply {
   string room = 1;
   string token = 2;
-  int64 valid_until_unix = 3;
+  string endpoint = 3;
+  int64 expiry = 4;
 }
 
 service Token {
