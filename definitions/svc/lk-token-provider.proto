@@ -1,5 +1,5 @@
 syntax = "proto3";
-package camfield.svc;
+package sphinx.camfield.svc;
 option go_package = "github.com/sphinx-camfield/svc";
 
 message EmptyRequest {}
