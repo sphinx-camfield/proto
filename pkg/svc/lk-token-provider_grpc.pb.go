@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LivekitToken_Request_FullMethodName = "/camfield.svc.lk_token_provider.LivekitToken/Request"
+	LivekitTokenProvider_Request_FullMethodName = "/camfield.svc.LivekitTokenProvider/Request"
 )
 
-// LivekitTokenClient is the client API for LivekitToken service.
+// LivekitTokenProviderClient is the client API for LivekitTokenProvider service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type LivekitTokenClient interface {
-	Request(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*RoomTokenReply, error)
+type LivekitTokenProviderClient interface {
+	Request(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*RoomTokenReply, error)
 }
 
-type livekitTokenClient struct {
+type livekitTokenProviderClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewLivekitTokenClient(cc grpc.ClientConnInterface) LivekitTokenClient {
-	return &livekitTokenClient{cc}
+func NewLivekitTokenProviderClient(cc grpc.ClientConnInterface) LivekitTokenProviderClient {
+	return &livekitTokenProviderClient{cc}
 }
 
-func (c *livekitTokenClient) Request(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*RoomTokenReply, error) {
+func (c *livekitTokenProviderClient) Request(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*RoomTokenReply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RoomTokenReply)
-	err := c.cc.Invoke(ctx, LivekitToken_Request_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LivekitTokenProvider_Request_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// LivekitTokenServer is the server API for LivekitToken service.
-// All implementations must embed UnimplementedLivekitTokenServer
+// LivekitTokenProviderServer is the server API for LivekitTokenProvider service.
+// All implementations must embed UnimplementedLivekitTokenProviderServer
 // for forward compatibility.
-type LivekitTokenServer interface {
-	Request(context.Context, *Empty) (*RoomTokenReply, error)
-	mustEmbedUnimplementedLivekitTokenServer()
+type LivekitTokenProviderServer interface {
+	Request(context.Context, *EmptyRequest) (*RoomTokenReply, error)
+	mustEmbedUnimplementedLivekitTokenProviderServer()
 }
 
-// UnimplementedLivekitTokenServer must be embedded to have
+// UnimplementedLivekitTokenProviderServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedLivekitTokenServer struct{}
+type UnimplementedLivekitTokenProviderServer struct{}
 
-func (UnimplementedLivekitTokenServer) Request(context.Context, *Empty) (*RoomTokenReply, error) {
+func (UnimplementedLivekitTokenProviderServer) Request(context.Context, *EmptyRequest) (*RoomTokenReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Request not implemented")
 }
-func (UnimplementedLivekitTokenServer) mustEmbedUnimplementedLivekitTokenServer() {}
-func (UnimplementedLivekitTokenServer) testEmbeddedByValue()                      {}
+func (UnimplementedLivekitTokenProviderServer) mustEmbedUnimplementedLivekitTokenProviderServer() {}
+func (UnimplementedLivekitTokenProviderServer) testEmbeddedByValue()                              {}
 
-// UnsafeLivekitTokenServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to LivekitTokenServer will
+// UnsafeLivekitTokenProviderServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to LivekitTokenProviderServer will
 // result in compilation errors.
-type UnsafeLivekitTokenServer interface {
-	mustEmbedUnimplementedLivekitTokenServer()
+type UnsafeLivekitTokenProviderServer interface {
+	mustEmbedUnimplementedLivekitTokenProviderServer()
 }
 
-func RegisterLivekitTokenServer(s grpc.ServiceRegistrar, srv LivekitTokenServer) {
-	// If the following call pancis, it indicates UnimplementedLivekitTokenServer was
+func RegisterLivekitTokenProviderServer(s grpc.ServiceRegistrar, srv LivekitTokenProviderServer) {
+	// If the following call pancis, it indicates UnimplementedLivekitTokenProviderServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&LivekitToken_ServiceDesc, srv)
+	s.RegisterService(&LivekitTokenProvider_ServiceDesc, srv)
 }
 
-func _LivekitToken_Request_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _LivekitTokenProvider_Request_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EmptyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LivekitTokenServer).Request(ctx, in)
+		return srv.(LivekitTokenProviderServer).Request(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LivekitToken_Request_FullMethodName,
+		FullMethod: LivekitTokenProvider_Request_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LivekitTokenServer).Request(ctx, req.(*Empty))
+		return srv.(LivekitTokenProviderServer).Request(ctx, req.(*EmptyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// LivekitToken_ServiceDesc is the grpc.ServiceDesc for LivekitToken service.
+// LivekitTokenProvider_ServiceDesc is the grpc.ServiceDesc for LivekitTokenProvider service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var LivekitToken_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "camfield.svc.lk_token_provider.LivekitToken",
-	HandlerType: (*LivekitTokenServer)(nil),
+var LivekitTokenProvider_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "camfield.svc.LivekitTokenProvider",
+	HandlerType: (*LivekitTokenProviderServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Request",
-			Handler:    _LivekitToken_Request_Handler,
+			Handler:    _LivekitTokenProvider_Request_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

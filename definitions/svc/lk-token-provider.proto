@@ -1,8 +1,8 @@
 syntax = "proto3";
-package camfield.svc.lk_token_provider;
+package camfield.svc;
 option go_package = "github.com/sphinx-camfield/svc";
 
-message Empty {}
+message EmptyRequest {}
 
 message RoomTokenReply {
   string room = 1;
@@ -11,6 +11,6 @@ message RoomTokenReply {
   int64 expiry = 4;
 }
 
-service LivekitToken {
-  rpc Request(Empty) returns (RoomTokenReply);
+service LivekitTokenProvider {
+  rpc Request(EmptyRequest) returns (RoomTokenReply);
 }
