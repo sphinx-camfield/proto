@@ -1,6 +1,6 @@
 syntax = "proto3";
 package camfield.events.endpoint;
-option go_package = "github.com/sphinx/camfield/proto/events";
+option go_package = "github.com/sphinx-camfield/proto/pkg/events";
 
 message EndpointEstablished {
   string id = 1;
