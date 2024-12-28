@@ -1,0 +1,13 @@
+syntax = "proto3";
+package camfield.events.device;
+option go_package = "github.com/sphinx/camfield/proto/events";
+
+message DeviceRegistered {
+  string id = 1;
+  string name = 2;
+  string endpoint = 3;
+}
+
+message DeviceRevoked {
+  string id = 1;
+}

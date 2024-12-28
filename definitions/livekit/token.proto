@@ -1,6 +1,6 @@
 syntax = "proto3";
-package camfield.livekit.token.provider;
-option go_package = "github.com/sphinx/camfield/livekit-token-provider/proto";
+package camfield.livekit.token;
+option go_package = "github.com/sphinx/camfield/livekit-token-provider/livekit";
 
 message Empty {}
 
