@@ -5,7 +5,6 @@ option go_package = "github.com/sphinx-camfield/proto/pkg/events";
 message DeviceRegistered {
   string id = 1;
   string name = 2;
-  string endpoint = 3;
 }
 
 message DeviceRevoked {
