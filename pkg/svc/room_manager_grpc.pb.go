@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.21.12
-// source: svc/room-manager.proto
+// source: svc/room_manager.proto
 
 package svc
 
@@ -117,5 +117,5 @@ var RoomManager_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "svc/room-manager.proto",
+	Metadata: "svc/room_manager.proto",
 }
