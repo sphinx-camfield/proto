@@ -1,0 +1,17 @@
+syntax = "proto3";
+package sphinx.camfield.svc;
+option go_package = "github.com/sphinx-camfield/svc";
+
+message RoomTokenRequest {
+  string room = 1;
+}
+
+message RoomTokenReply {
+  string token = 1;
+  string endpoint = 2;
+  int64 expiry = 3;
+}
+
+service RoomManager {
+  rpc Request(RoomTokenRequest) returns (RoomTokenReply);
+}
