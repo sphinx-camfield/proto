@@ -3,10 +3,11 @@ package sphinx.camfield.events;
 option go_package = "github.com/sphinx-camfield/proto/pkg/events";
 
 message DeviceAssigned {
-  string id = 1;
-  string name = 2;
+  string device = 1;
+  string room = 2;
 }
 
 message DeviceRemoved {
-  string id = 1;
+  string device = 1;
+  string room = 2;
 }
